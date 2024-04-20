@@ -12,7 +12,6 @@ const gradients = [
 ];
 
 function App() {
-	const [post, setPost] = useState<any>(null);
 	const [color, setColor] = useState(gradients[0]);
 	const [isModal, setModal] = useState<boolean>(false);
 
@@ -25,27 +24,29 @@ function App() {
 	};
 
 	return (
-		<div className="grid grid-rows-5 min-h-lvh h-full bg-white text-primary dark:bg-gray-950 dark:text-secondary">
-			<header className="flex w-full flex-col p-4">
+		<div className="flex flex-col min-h-lvh h-full bg-white text-primary dark:bg-gray-950 dark:text-secondary pb-10">
+			<header className="flex w-full flex-col p-4 md:px-8">
 				<section className="flex justify-between items-center">
 					<div>
-						<p className="text-primary dark:text-white">Poet.so</p>
+						<p className="text-secondary dark:text-gray-200 font-sans text-3xl font-bold ">
+							Faye
+						</p>
 					</div>
 					<nav className="flex space-x-4 items-baseline">
 						<Info className="text-primary dark:text-white" size={22} />
 						<SwitchTheme />
 					</nav>
 				</section>
-				<section className="self-center flex items-center justify-center h-full w-full max-w-xl">
+				<section className="self-center flex items-start justify-center h-full w-full pt-8">
 					<SearchPost />
 				</section>
 			</header>
 
-			<main className="row-span-3 flex flex-col items-center justify-center">
-				<Card post={post} color={color} setPost={setPost} />
+			<main className="pt-8 px-4 flex flex-col items-center justify-start">
+				<Card color={color} />
 			</main>
 
-			<footer className="flex items-center justify-center">
+			<footer className="flex items-center justify-center pt-14 px-4">
 				<Tabar
 					gradients={gradients}
 					isModal={isModal}

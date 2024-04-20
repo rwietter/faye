@@ -24,11 +24,11 @@
 
   --transition-primary: color 200ms ease, background 200ms ease;
 
-  --font-primary: Inter, sans-serif;
-  --font-secondary: Inter, sans-serif;
-  --font-title: var(--font-secondary), Inter, sans-serif;
+  --font-primary: 'Red Hat Display', sans-serif;
+  --font-secondary: 'Red Hat Display', sans-serif;
+  --font-title: var(--font-secondary), 'Red Hat Display', sans-serif;
   --font-code: monospace;
-  --font-bolder: Inter, sans-serif;
+  --font-bolder: 'Red Hat Display', sans-serif;
 
   font-family: var(--font-primary), system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

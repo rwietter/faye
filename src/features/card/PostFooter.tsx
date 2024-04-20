@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useSearch } from "../../stores/useSearchPost";
 
 function roundedLikes(likes: number) {
 	if (likes < 1000) return likes;
@@ -6,39 +7,46 @@ function roundedLikes(likes: number) {
 	return `${Math.round(likes / 100000) / 10}m`;
 }
 
-const PostFooter = ({ post }: any) => (
-	<section className="pt-6">
-		<p className="font-light text-sm text-secondary dark:text-white">
-			{new Intl.DateTimeFormat(
-				post?.data?.thread?.post?.record.langs[0] || "en-us",
-				{
-					dateStyle: "medium",
-					timeStyle: "short",
-				},
-			).format(new Date(post?.data?.thread?.post?.record.createdAt))}
-		</p>
-		<section className="flex space-x-2 pt-3 font-light">
-			<p className="text-secondary dark:text-white">
-				<strong className="font-bold text-sm text-primary dark:text-white">
-					{/* {post?.data.thread.post.likeCount} */}
-					{roundedLikes(+post?.data.thread.post.likeCount)}
-				</strong>{" "}
-				likes
+const PostFooter = () => {
+	const { post } = useSearch();
+
+	if (!post) return <span />;
+
+	const { thread } = post;
+
+	return (
+		<section className="pt-6">
+			<p className="font-sans text-md text-secondary dark:text-white">
+				{new Intl.DateTimeFormat(
+					thread?.post?.record.langs ? thread?.post?.record.langs[0] : "en-us",
+					{
+						dateStyle: "medium",
+						timeStyle: "short",
+					},
+				).format(new Date(thread?.post?.record.createdAt))}
 			</p>
-			<p className="text-secondary dark:text-white">
-				<strong className="font-bold text-sm text-primary dark:text-white">
-					{roundedLikes(post?.data.thread.post.replyCount)}
-				</strong>{" "}
-				replies
-			</p>
-			<p className="text-secondary dark:text-white">
-				<strong className="font-bold text-sm text-primary dark:text-white">
-					{roundedLikes(post?.data.thread.post.repostCount)}
-				</strong>{" "}
-				reposts
-			</p>
+			<section className="flex space-x-2 pt-3">
+				<p className="text-secondary dark:text-white font-sans text-md">
+					<strong className="font-bold text-primary dark:text-white">
+						{roundedLikes(+thread.post.likeCount)}
+					</strong>{" "}
+					likes
+				</p>
+				<p className="text-secondary dark:text-white font-sans text-md">
+					<strong className="font-bold text-primary dark:text-white">
+						{roundedLikes(thread.post.replyCount)}
+					</strong>{" "}
+					replies
+				</p>
+				<p className="text-secondary dark:text-white font-sans text-md">
+					<strong className="font-bold text-primary dark:text-white">
+						{roundedLikes(thread.post.repostCount)}
+					</strong>{" "}
+					reposts
+				</p>
+			</section>
 		</section>
-	</section>
-);
+	);
+};
 
 export default memo(PostFooter);

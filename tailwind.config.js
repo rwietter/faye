@@ -6,7 +6,10 @@ export default {
       colors: {
         primary: "#111",
         secondary: "rgba(0,0,0,.5)",
-      }
+      },
+      fontFamily: {
+        sans: ["Red Hat Display", "Inter", "sans-serif"],
+      },
     },
   },
   darkMode: 'selector',

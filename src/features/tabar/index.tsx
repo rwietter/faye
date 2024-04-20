@@ -16,7 +16,7 @@ const Tabar: React.FC<TabarProps> = ({
 	handleSetColor,
 }) => {
 	return (
-		<section className="flex border-2 border-gray-400 justify-evenly rounded-md w-full max-w-lg p-4 backdrop-blur-lg backdrop-filter bg-white/30 shadow-2xl mobile-scaling">
+		<section className="flex bottom-10 border-2 border-gray-400 justify-evenly rounded-md w-full max-w-2xl p-4 backdrop-blur-lg backdrop-filter bg-white/30 shadow-2xl mobile-scaling">
 			<Swatches
 				size={32}
 				className="cursor-pointer text-primary dark:text-white"
