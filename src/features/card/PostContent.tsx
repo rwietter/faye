@@ -17,7 +17,7 @@ const PostContent = () => {
 
 		const linkedText = html.replace(
 			/((https?|ftp):\/\/[^\s/$.?#].[^\s]*)|((www\.)?[a-zA-Z0-9]+\.[a-zA-Z]{2,}(\S*))/g,
-			(match, p1, p2, p3) => {
+			(_match, p1, _p2, p3) => {
 				const url = p1 || `http://${p3}`;
 				return `<a href="${url}" class="text-blue-600 pointer-events-none" target="_blank" rel="noopener noreferrer">${url}</a>`;
 			},
